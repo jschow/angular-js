@@ -8,13 +8,17 @@
     <main>
       <section ng-controller="FirstController">
 
-        <div ng-repeat="key in people">
+        <input type="text" placeholder="search people names" ng-model="filterName.name">
+        <input type="text" placeholder="search people city" ng-model="filterName.city">
+          {{filterName}}
+
+        <div ng-repeat="key in people | filter:filterName">
+          <h1 ng-show="key.isNew">Thanks!</h1>
+          <h1 ng-hide="key.isNew">Hey {{key.name}} thanks again</h1>
 
           <h1>{{key.name}}</h1>
           <h1>{{key.age}}</h1>
           <h1>{{key.email}}</h1>
-
-
         </div>
 
       </section>
